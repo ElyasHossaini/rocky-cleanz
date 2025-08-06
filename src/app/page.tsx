@@ -29,7 +29,7 @@ export default function Home() {
           
           <div className="flex justify-center">
             <QRCodeGenerator 
-              url={`${typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000'}/animated-entry`}
+              url="https://rockycleanz.com/animated-entry"
               size={250}
               className="bg-white p-6 rounded-xl shadow-lg"
             />
