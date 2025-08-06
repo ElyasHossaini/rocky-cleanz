@@ -122,7 +122,7 @@ const WhyChooseUs = () => {
                 What You Can Expect
               </h3>
               <p className="text-blue-100 text-lg mb-8 leading-relaxed">
-                When you choose Rocky Cleanz, you're choosing a team that values quality, efficiency, and customer satisfaction above all else.
+                When you choose Rocky Cleanz, you&apos;re choosing a team that values quality, efficiency, and customer satisfaction above all else.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {benefits.map((benefit, index) => (
