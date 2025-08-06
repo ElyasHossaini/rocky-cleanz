@@ -108,7 +108,7 @@ const Footer = () => {
             </div>
             
             {/* Footer sections */}
-            {footerSections.map((section, index) => (
+            {footerSections.map((section) => (
               <div key={section.title}>
                 <h4 className="text-lg font-semibold text-blue-400 mb-4">
                   {section.title}
