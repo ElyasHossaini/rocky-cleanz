@@ -7,7 +7,9 @@ import {
   Recycle, 
   Sofa, 
   Truck, 
-  ChevronDown 
+  ChevronDown,
+  Droplets,
+  Sparkles
 } from 'lucide-react'
 
 // Service interface
@@ -203,10 +205,30 @@ const ServiceCard = ({
 const Services = () => {
   const [activeService, setActiveService] = useState<string | null>(null)
   const [mounted, setMounted] = useState(false)
+  const [currentIcon, setCurrentIcon] = useState(0)
+
+  // Service icons for rotation
+  const serviceIcons = [
+    <SprayCan key="spray" className="w-8 h-8 text-white" />,
+    <Recycle key="recycle" className="w-8 h-8 text-white" />,
+    <Sofa key="sofa" className="w-8 h-8 text-white" />,
+    <Truck key="truck" className="w-8 h-8 text-white" />,
+    <Droplets key="droplets" className="w-8 h-8 text-white" />,
+    <Sparkles key="sparkles" className="w-8 h-8 text-white" />
+  ]
 
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  // Rotate through service icons
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIcon((prev) => (prev + 1) % serviceIcons.length)
+    }, 2000)
+
+    return () => clearInterval(interval)
+  }, [serviceIcons.length])
 
   // Toggle service dropdown
   const toggleService = (serviceId: string) => {
@@ -259,11 +281,30 @@ const Services = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-full mb-6"
+          >
+            <motion.div
+              key={currentIcon}
+              initial={{ opacity: 0, scale: 0.5, rotate: -180 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              exit={{ opacity: 0, scale: 0.5, rotate: 180 }}
+              transition={{ duration: 0.5 }}
+              className="absolute"
+            >
+              {serviceIcons[currentIcon]}
+            </motion.div>
+          </motion.div>
           <h2 className="text-4xl md:text-5xl font-bold text-blue-600 mb-4">
-            Our Services
+            Our Professional Services
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Choose from our range of professional cleaning services
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            From pressure washing to bin cleaning, we offer comprehensive solutions to keep your property looking its best. 
+            Each service is tailored to your specific needs with competitive pricing and guaranteed results.
           </p>
         </motion.div>
 

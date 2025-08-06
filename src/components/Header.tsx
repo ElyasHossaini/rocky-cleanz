@@ -77,13 +77,6 @@ const Header = () => {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full" />
               </button>
             ))}
-            <a
-              href="/animated-entry"
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative group"
-            >
-              Animated Entry
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full" />
-            </a>
           </nav>
 
           {/* Mobile menu button */}
@@ -117,12 +110,6 @@ const Header = () => {
                   {item.label}
                 </button>
               ))}
-              <a
-                href="/animated-entry"
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 text-left"
-              >
-                Animated Entry
-              </a>
             </div>
           </div>
         )}
