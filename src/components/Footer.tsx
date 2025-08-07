@@ -86,7 +86,7 @@ const Footer = () => {
       items: [
         { icon: <Phone className="w-5 h-5" />, text: '403-479-4417' },
         { icon: <Mail className="w-5 h-5" />, text: 'safar@rockycleanz.com' },
-        { icon: <MapPin className="w-5 h-5" />, text: 'Executive of Communications' }
+        { icon: <MapPin className="w-5 h-5" />, text: 'Chief Operating Officer' }
       ]
     },
     {

@@ -19,6 +19,20 @@ export async function POST(request: NextRequest) {
       console.log('Email configuration missing. Form data received:', body)
       console.log('EMAIL_USER:', process.env.EMAIL_USER ? 'Set' : 'Not set')
       console.log('EMAIL_PASS:', process.env.EMAIL_PASS ? 'Set' : 'Not set')
+      console.log('Environment:', process.env.NODE_ENV)
+      
+      // In production, we should fail gracefully but log the issue
+      if (process.env.NODE_ENV === 'production') {
+        console.error('Email not configured in production environment')
+        return NextResponse.json(
+          { 
+            message: 'Form submitted successfully (email not configured)',
+            note: 'Please configure EMAIL_USER and EMAIL_PASS environment variables in your hosting platform'
+          },
+          { status: 200 }
+        )
+      }
+      
       return NextResponse.json(
         { 
           message: 'Form submitted successfully (email not configured)',

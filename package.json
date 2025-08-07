@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "setup-email": "node setup-email.js"
+    "setup-email": "node setup-email.js",
+    "check-email": "node check-email-config.js"
   },
   "dependencies": {
     "@types/qrcode": "^1.5.5",
