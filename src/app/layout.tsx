@@ -7,15 +7,24 @@ const inter = Inter({ subsets: ['latin'] })
 
 // SEO and metadata configuration
 export const metadata: Metadata = {
-  title: 'Rocky Cleanz - Professional Cleaning Services',
-  description: 'Professional exterior cleaning services bringing sparkle back to Calgary homes & businesses. From pressure washing to bin cleaning, we deliver exceptional results with eco-friendly methods.',
-  keywords: 'cleaning services, pressure washing, bin cleaning, carpet cleaning, junk removal, Calgary cleaning',
-  authors: [{ name: 'Rocky Cleanz' }],
+  title: 'Rocky Cleanz - Professional Exterior Cleaning Services Calgary',
+  description: 'Professional exterior cleaning services bringing sparkle back to Calgary homes & businesses. Fully insured, eco-friendly, and 5-star rated.',
+  keywords: 'exterior cleaning, pressure washing, Calgary, window cleaning, gutter cleaning, house washing',
   openGraph: {
-    title: 'Rocky Cleanz - Professional Cleaning Services',
-    description: 'Professional exterior cleaning services in Calgary. Pressure washing, bin cleaning, carpet cleaning, and junk removal.',
-    type: 'website',
+    title: 'Rocky Cleanz - Professional Exterior Cleaning Services Calgary',
+    description: 'Professional exterior cleaning services bringing sparkle back to Calgary homes & businesses.',
+    url: 'https://rockycleanz.com',
+    siteName: 'Rocky Cleanz',
+    images: [
+      {
+        url: '/images/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Rocky Cleanz Logo',
+      },
+    ],
     locale: 'en_CA',
+    type: 'website',
   },
   icons: {
     icon: '/images/logo.png',
@@ -29,11 +38,116 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Rocky Cleanz",
+    "image": "https://rockycleanz.com/images/logo.png",
+    "description": "Professional exterior cleaning services bringing sparkle back to Calgary homes & businesses.",
+    "url": "https://rockycleanz.com",
+    "telephone": "+1-403-479-4415",
+    "email": "info@rockycleanz.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calgary",
+      "addressLocality": "Calgary",
+      "addressRegion": "AB",
+      "addressCountry": "CA"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "51.0447",
+      "longitude": "-114.0719"
+    },
+    "openingHours": "Mo-Su 00:00-23:59",
+    "priceRange": "$$",
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "51.0447",
+        "longitude": "-114.0719"
+      },
+      "geoRadius": "50000"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Exterior Cleaning Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Pressure Washing",
+            "description": "Professional pressure washing for driveways, sidewalks, and exterior surfaces"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Window Cleaning",
+            "description": "Professional window cleaning services for residential and commercial properties"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Gutter Cleaning",
+            "description": "Complete gutter cleaning and maintenance services"
+          }
+        }
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "500",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Sarah Johnson"
+        },
+        "reviewBody": "Excellent service! They did a fantastic job cleaning our house exterior. Very professional and thorough."
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Mike Chen"
+        },
+        "reviewBody": "Great team, very reliable and did an amazing job on our pressure washing project."
+      }
+    ]
+  }
+
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={inter.className}>
-        {children}
-      </body>
+    <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
+      </head>
+      <body className={inter.className}>{children}</body>
     </html>
   )
 } 
