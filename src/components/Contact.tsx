@@ -124,22 +124,45 @@ const Contact = () => {
       console.log('Response status:', response.status)
 
       if (response.ok) {
-        setIsSubmitting(false)
-        setIsSubmitted(true)
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          services: [],
-          description: ''
-        })
+        try {
+          const responseData = await response.json()
+          console.log('Response data:', responseData)
+          
+          setIsSubmitting(false)
+          setIsSubmitted(true)
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            services: [],
+            description: ''
+          })
 
-        // Reset success message after 5 seconds
-        setTimeout(() => setIsSubmitted(false), 5000)
+          // Reset success message after 5 seconds
+          setTimeout(() => setIsSubmitted(false), 5000)
+        } catch (parseError) {
+          console.error('Error parsing response:', parseError)
+          // If we can't parse the response but status is ok, still show success
+          setIsSubmitting(false)
+          setIsSubmitted(true)
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            services: [],
+            description: ''
+          })
+          setTimeout(() => setIsSubmitted(false), 5000)
+        }
       } else {
-        const errorData = await response.json()
-        console.error('Email sending failed:', errorData.error)
-        alert(`Failed to send email: ${errorData.error}`)
+        try {
+          const errorData = await response.json()
+          console.error('Email sending failed:', errorData.error)
+          alert(`Failed to send email: ${errorData.error}`)
+        } catch (parseError) {
+          console.error('Error parsing error response:', parseError)
+          alert('Failed to send email. Please try again.')
+        }
         setIsSubmitting(false)
       }
     } catch (error) {

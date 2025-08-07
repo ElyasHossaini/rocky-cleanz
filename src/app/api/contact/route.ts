@@ -17,8 +17,13 @@ export async function POST(request: NextRequest) {
     // Check if email configuration is set up
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
       console.log('Email configuration missing. Form data received:', body)
+      console.log('EMAIL_USER:', process.env.EMAIL_USER ? 'Set' : 'Not set')
+      console.log('EMAIL_PASS:', process.env.EMAIL_PASS ? 'Set' : 'Not set')
       return NextResponse.json(
-        { message: 'Form submitted successfully (email not configured)' },
+        { 
+          message: 'Form submitted successfully (email not configured)',
+          note: 'Please configure EMAIL_USER and EMAIL_PASS environment variables to enable email sending'
+        },
         { status: 200 }
       )
     }
