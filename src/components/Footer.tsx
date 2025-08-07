@@ -66,10 +66,34 @@ const Footer = () => {
       ]
     },
     {
+      title: 'Ali Payaam Hossein Zada',
+      items: [
+        { icon: <Phone className="w-5 h-5" />, text: '403-479-4415' },
+        { icon: <Mail className="w-5 h-5" />, text: 'ali@rockycleanz.com' },
+        { icon: <MapPin className="w-5 h-5" />, text: 'Founder' }
+      ]
+    },
+    {
+      title: 'Mustafa Mousavi',
+      items: [
+        { icon: <Phone className="w-5 h-5" />, text: '403-479-4416' },
+        { icon: <Mail className="w-5 h-5" />, text: 'mustafa@rockycleanz.com' },
+        { icon: <MapPin className="w-5 h-5" />, text: 'Co-Founder' }
+      ]
+    },
+    {
+      title: 'Safar Sai',
+      items: [
+        { icon: <Phone className="w-5 h-5" />, text: '403-479-4417' },
+        { icon: <Mail className="w-5 h-5" />, text: 'safar@rockycleanz.com' },
+        { icon: <MapPin className="w-5 h-5" />, text: 'Executive of Communications' }
+      ]
+    },
+    {
       title: 'Contact Info',
       items: [
-        { icon: <Phone className="w-5 h-5" />, text: '825-712-0857' },
-        { icon: <Mail className="w-5 h-5" />, text: 'probinz2025@gmail.com' },
+        { icon: <Phone className="w-5 h-5" />, text: '403-479-4415' },
+        { icon: <Mail className="w-5 h-5" />, text: 'info@rockycleanz.com' },
         { icon: <MapPin className="w-5 h-5" />, text: 'Calgary, AB' }
       ]
     },
@@ -86,10 +110,10 @@ const Footer = () => {
   if (!mounted) {
     return (
       <footer className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="max-w-7xl mx-auto px-12 sm:px-16 lg:px-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-x-20 gap-y-8 mb-12">
             {/* Company info */}
-            <div className="lg:col-span-1">
+            <div className="lg:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
                 <Image
                   src="/images/logo.png"
@@ -125,11 +149,11 @@ const Footer = () => {
                   </ul>
                 )}
                 {section.items && (
-                  <div className="space-y-2">
+                  <div className="flex flex-wrap gap-4">
                     {section.items.map((item, itemIndex) => (
                       <div key={itemIndex} className="flex items-center space-x-2 text-gray-300">
-                        <span className="text-blue-400">{item.icon}</span>
-                        <span>{item.text}</span>
+                        <span className="text-blue-400 flex-shrink-0">{item.icon}</span>
+                        <span className="text-sm whitespace-nowrap">{item.text}</span>
                       </div>
                     ))}
                   </div>
@@ -158,30 +182,30 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-gray-900 text-white py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+    <footer className="bg-gray-900 text-white py-20">
+      <div className="max-w-7xl mx-auto px-12 sm:px-16 lg:px-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-x-20 gap-y-8 mb-16">
           {/* Company information */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="lg:col-span-1"
+            className="lg:col-span-2"
           >
-            <div className="flex items-center space-x-3 mb-4">
+            <div className="flex items-center space-x-3 mb-6">
               <Image
                 src="/images/logo.png"
                 alt="Rocky Cleanz Logo"
-                width={40}
-                height={40}
+                width={48}
+                height={48}
                 className="object-contain"
               />
-              <h3 className="text-2xl font-bold text-blue-400">
+              <h3 className="text-3xl font-bold text-blue-400">
                 Rocky Cleanz
               </h3>
             </div>
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-gray-300 leading-relaxed text-lg">
               Professional exterior cleaning services bringing sparkle back to Calgary homes & businesses.
             </p>
           </motion.div>
@@ -195,19 +219,19 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-lg font-semibold text-blue-400 mb-4">
+              <h4 className="text-xl font-bold text-blue-400 mb-6 border-b border-gray-700 pb-2">
                 {section.title}
               </h4>
               
               {/* Quick links */}
               {section.links && (
-                <ul className="space-y-2">
+                <ul className="space-y-4">
                   {section.links.map((link) => (
                     <li key={link.name}>
                       <button
                         onClick={link.onClick}
                         suppressHydrationWarning
-                        className="text-gray-300 hover:text-blue-400 transition-colors duration-200"
+                        className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-base font-medium"
                       >
                         {link.name}
                       </button>
@@ -218,11 +242,11 @@ const Footer = () => {
               
               {/* Contact items */}
               {section.items && (
-                <div className="space-y-2">
+                <div className="flex flex-wrap gap-4">
                   {section.items.map((item, itemIndex) => (
-                    <div key={itemIndex} className="flex items-center space-x-2 text-gray-300">
-                      <span className="text-blue-400">{item.icon}</span>
-                      <span>{item.text}</span>
+                    <div key={itemIndex} className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200">
+                      <span className="text-blue-400 flex-shrink-0">{item.icon}</span>
+                      <span className="text-sm whitespace-nowrap">{item.text}</span>
                     </div>
                   ))}
                 </div>
@@ -255,9 +279,9 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="border-t border-gray-800 pt-8 text-center"
+          className="border-t border-gray-800 pt-12 text-center"
         >
-          <p className="text-gray-400">
+          <p className="text-gray-400 text-lg">
             © 2025 Rocky Cleanz. All rights reserved.
           </p>
         </motion.div>
