@@ -14,12 +14,21 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Create transporter (you'll need to configure this with your email service)
+    // Check if email configuration is set up
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.log('Email configuration missing. Form data received:', body)
+      return NextResponse.json(
+        { message: 'Form submitted successfully (email not configured)' },
+        { status: 200 }
+      )
+    }
+
+    // Create transporter
     const transporter = nodemailer.createTransport({
-      service: 'gmail', // or your email service
+      service: 'gmail',
       auth: {
-        user: process.env.EMAIL_USER, // your email
-        pass: process.env.EMAIL_PASS  // your app password
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
       }
     })
 

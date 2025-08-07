@@ -108,9 +108,11 @@ const Contact = () => {
       return
     }
     
+    console.log('Submitting form data:', formData)
     setIsSubmitting(true)
 
     try {
+      console.log('Sending request to /api/contact')
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -118,6 +120,8 @@ const Contact = () => {
         },
         body: JSON.stringify(formData),
       })
+      
+      console.log('Response status:', response.status)
 
       if (response.ok) {
         setIsSubmitting(false)
@@ -135,10 +139,12 @@ const Contact = () => {
       } else {
         const errorData = await response.json()
         console.error('Email sending failed:', errorData.error)
+        alert(`Failed to send email: ${errorData.error}`)
         setIsSubmitting(false)
       }
     } catch (error) {
       console.error('Email sending failed:', error)
+      alert('Failed to send email. Please try again.')
       setIsSubmitting(false)
     }
   }
