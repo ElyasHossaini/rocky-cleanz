@@ -18,7 +18,7 @@ const WhyChooseUs = () => {
     {
       icon: <Clock className="w-8 h-8" />,
       title: "Quick & Efficient",
-      description: "We work fast without compromising quality. Most jobs completed in under 2 hours."
+      description: "We work fast without compromising quality."
     },
     {
       icon: <Shield className="w-8 h-8" />,
