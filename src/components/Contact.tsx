@@ -101,6 +101,13 @@ const Contact = () => {
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Validate that at least one service is selected
+    if (formData.services.length === 0) {
+      alert('Please select at least one service')
+      return
+    }
+    
     setIsSubmitting(true)
 
     try {
