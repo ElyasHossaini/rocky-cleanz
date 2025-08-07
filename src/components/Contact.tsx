@@ -16,7 +16,7 @@ interface FormData {
   name: string
   email: string
   phone: string
-  service: string
+  services: string[]
   description: string
 }
 
@@ -34,26 +34,69 @@ const Contact = () => {
     name: '',
     email: '',
     phone: '',
-    service: '',
+    services: [],
     description: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   // Client-side mounting
   useEffect(() => {
     setMounted(true)
   }, [])
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element
+      if (!target.closest('.dropdown-container')) {
+        setIsDropdownOpen(false)
+      }
+    }
+
+    if (isDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isDropdownOpen])
+
   // Handle form input changes
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({
       ...prev,
       [name]: value
     }))
   }
+
+  // Handle service selection
+  const handleServiceToggle = (serviceValue: string) => {
+    setFormData(prev => ({
+      ...prev,
+      services: prev.services.includes(serviceValue)
+        ? prev.services.filter(service => service !== serviceValue)
+        : [...prev.services, serviceValue]
+    }))
+  }
+
+  // Service options
+  const serviceOptions = [
+    { value: 'concrete-pressure-washing', label: 'Concrete Pressure Washing' },
+    { value: 'bin-cleaning', label: 'Bin & Dumpster Cleaning' },
+    { value: 'carpet-cleaning', label: 'Carpet Cleaning' },
+    { value: 'junk-removal', label: 'Junk Removal' },
+    { value: 'window-cleaning', label: 'Window Cleaning' },
+    { value: 'gutter-cleaning', label: 'Gutter Cleaning' },
+    { value: 'house-washing', label: 'House Washing' },
+    { value: 'other', label: 'Other' }
+  ]
+
+
 
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
@@ -76,7 +119,7 @@ const Contact = () => {
           name: '',
           email: '',
           phone: '',
-          service: '',
+          services: [],
           description: ''
         })
 
@@ -286,25 +329,52 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                      Service Needed *
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Services Needed *
                     </label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleInputChange}
-                      required
-                      suppressHydrationWarning
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
-                    >
-                      <option value="">Select a service</option>
-                      <option value="concrete-pressure-washing">Concrete Pressure Washing</option>
-                      <option value="bin-cleaning">Bin & Dumpster Cleaning</option>
-                      <option value="carpet-cleaning">Carpet Cleaning</option>
-                      <option value="junk-removal">Junk Removal</option>
-                      <option value="other">Other</option>
-                    </select>
+                    <div className="relative dropdown-container">
+                      <button
+                        type="button"
+                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 text-left bg-white flex items-center justify-between"
+                      >
+                        <span className={formData.services.length === 0 ? 'text-gray-500' : 'text-gray-900'}>
+                          {formData.services.length === 0 
+                            ? 'Select services' 
+                            : formData.services.length === 1
+                            ? serviceOptions.find(s => s.value === formData.services[0])?.label
+                            : `${formData.services.length} services selected`
+                          }
+                        </span>
+                        <svg
+                          className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                      
+                      {isDropdownOpen && (
+                        <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-y-auto">
+                          {serviceOptions.map((service) => (
+                            <label
+                              key={service.value}
+                              className="flex items-center px-4 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0"
+                            >
+                              <input
+                                type="checkbox"
+                                checked={formData.services.includes(service.value)}
+                                onChange={() => handleServiceToggle(service.value)}
+                                className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 mr-3"
+                              />
+                              <span className="text-gray-700">{service.label}</span>
+                            </label>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
 
