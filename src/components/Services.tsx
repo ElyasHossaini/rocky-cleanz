@@ -28,22 +28,6 @@ interface Service {
 // Services data
 const services: Service[] = [
   {
-    id: 'concrete-pressure-washing',
-    title: 'Concrete Pressure Washing',
-    icon: <SprayCan className="w-6 h-6" />,
-    description: 'Removes dirt, grime & buildup from driveways, sidewalks, patios & more. Professional pressure washing that restores your concrete surfaces to their original beauty.',
-    pricing: {
-      title: 'Pricing:',
-      items: [
-        'Driveways: Starting at $150',
-        'Sidewalks: Starting at $100',
-        'Patios: Starting at $200',
-        'Commercial: Custom quotes available'
-      ],
-      note: '*Pricing depends on size – message us for a quote!'
-    }
-  },
-  {
     id: 'bin-cleaning',
     title: 'Bin & Dumpster Cleaning',
     icon: <Recycle className="w-6 h-6" />,
@@ -51,8 +35,8 @@ const services: Service[] = [
     pricing: {
       title: 'Pricing:',
       items: [
-        'Residential Bins: $50 each',
-        'Commercial Bins: $75 each',
+        'Residential Bins: $50 for 3 bins',
+        'Commercial Bins: Same as dumpsters',
         'Dumpsters: Starting at $150',
         'Monthly Service: 20% discount'
       ],
@@ -67,6 +51,8 @@ const services: Service[] = [
     pricing: {
       title: 'Pricing:',
       items: [
+        'Residential Carpet Cleaning: $0.50/sq ft',
+        'Commercial Carpet Cleaning: $0.40/sq ft',
         'Hand Cleaning (Deep Clean): $0.50/sq ft',
         'Vacuum Cleaning (Quick Refresh): $0.30/sq ft',
         'Stain Treatment: $25 per stain',
@@ -83,6 +69,8 @@ const services: Service[] = [
     pricing: {
       title: 'Services Include:',
       items: [
+        'Residential Junk Removal: Custom pricing',
+        'Commercial Junk Removal: Custom pricing',
         'Furniture, Appliances, and Mattress Removal',
         'Yard Waste & Construction Debris',
         'Basement, Garage & Estate Cleanouts',
@@ -90,6 +78,24 @@ const services: Service[] = [
         'Responsible Disposal - We recycle what we can!'
       ],
       note: 'Custom pricing based on volume and type of items'
+    }
+  },
+  {
+    id: 'concrete-pressure-washing',
+    title: 'Concrete Pressure Washing',
+    icon: <SprayCan className="w-6 h-6" />,
+    description: 'Removes dirt, grime & buildup from driveways, sidewalks, patios & more. Professional pressure washing that restores your concrete surfaces to their original beauty.',
+    pricing: {
+      title: 'Pricing:',
+      items: [
+        'Residential Concrete Washing: Starting at $150',
+        'Commercial Concrete Washing: Starting at $200',
+        'Driveways: Starting at $150',
+        'Sidewalks: Starting at $100',
+        'Patios: Starting at $200',
+        'Commercial: Custom quotes available'
+      ],
+      note: '*Pricing depends on size – message us for a quote!'
     }
   }
 ]
