@@ -68,24 +68,18 @@ const Footer = () => {
     {
       title: 'Ali Payaam Hossein Zada',
       items: [
-        { icon: <Phone className="w-5 h-5" />, text: '403-479-4415' },
-        { icon: <Mail className="w-5 h-5" />, text: 'ali@rockycleanz.com' },
         { icon: <MapPin className="w-5 h-5" />, text: 'Founder' }
       ]
     },
     {
       title: 'Mustafa Mousavi',
       items: [
-        { icon: <Phone className="w-5 h-5" />, text: '403-479-4416' },
-        { icon: <Mail className="w-5 h-5" />, text: 'mustafa@rockycleanz.com' },
         { icon: <MapPin className="w-5 h-5" />, text: 'Co-Founder' }
       ]
     },
     {
       title: 'Safar Sai',
       items: [
-        { icon: <Phone className="w-5 h-5" />, text: '403-479-4417' },
-        { icon: <Mail className="w-5 h-5" />, text: 'safar@rockycleanz.com' },
         { icon: <MapPin className="w-5 h-5" />, text: 'Chief Operating Officer' }
       ]
     },
