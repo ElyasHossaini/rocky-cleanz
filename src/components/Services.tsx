@@ -9,7 +9,8 @@ import {
   Truck, 
   ChevronDown,
   Droplets,
-  Sparkles
+  Sparkles,
+  Home
 } from 'lucide-react'
 
 // Service interface
@@ -27,6 +28,25 @@ interface Service {
 
 // Services data
 const services: Service[] = [
+  {
+    id: 'general-cleaning',
+    title: 'General Cleaning',
+    icon: <Home className="w-6 h-6" />,
+    description: 'Comprehensive residential and commercial cleaning services. From regular maintenance to deep cleaning, we keep your space spotless and healthy.',
+    pricing: {
+      title: 'Services Include:',
+      items: [
+        'Residential & Commercial Cleaning',
+        'Regular Maintenance (Weekly/Monthly)',
+        'Deep Cleaning & Spring Cleaning',
+        'Move-in/Move-out Cleaning',
+        'Kitchen & Bathroom Focus',
+        'Window Cleaning',
+        'Custom Cleaning Packages'
+      ],
+      note: 'Contact us for a free estimate! Pricing varies based on size, frequency, and specific requirements.'
+    }
+  },
   {
     id: 'bin-cleaning',
     title: 'Bin & Dumpster Cleaning',
@@ -215,6 +235,7 @@ const Services = () => {
 
   // Service icons for rotation
   const serviceIcons = [
+    <Home key="home" className="w-8 h-8 text-white" />,
     <SprayCan key="spray" className="w-8 h-8 text-white" />,
     <Recycle key="recycle" className="w-8 h-8 text-white" />,
     <Sofa key="sofa" className="w-8 h-8 text-white" />,
