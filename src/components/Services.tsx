@@ -11,7 +11,7 @@ import {
   Droplets,
   Sparkles,
   Home,
-  Window
+  AppWindow
 } from 'lucide-react'
 
 // Service interface
@@ -122,7 +122,7 @@ const services: Service[] = [
   {
     id: 'window-cleaning',
     title: 'Window Cleaning',
-    icon: <Window className="w-6 h-6" />,
+    icon: <AppWindow className="w-6 h-6" />,
     description: 'Professional window cleaning for both residential and commercial properties. Crystal clear windows that enhance your property\'s appearance and let in more natural light.',
     pricing: {
       title: 'Pricing:',
@@ -259,7 +259,7 @@ const Services = () => {
     <Recycle key="recycle" className="w-8 h-8 text-white" />,
     <Sofa key="sofa" className="w-8 h-8 text-white" />,
     <Truck key="truck" className="w-8 h-8 text-white" />,
-    <Window key="window" className="w-8 h-8 text-white" />,
+    <AppWindow key="window" className="w-8 h-8 text-white" />,
     <Droplets key="droplets" className="w-8 h-8 text-white" />,
     <Sparkles key="sparkles" className="w-8 h-8 text-white" />
   ]
