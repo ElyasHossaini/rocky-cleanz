@@ -10,7 +10,8 @@ import {
   ChevronDown,
   Droplets,
   Sparkles,
-  Home
+  Home,
+  Window
 } from 'lucide-react'
 
 // Service interface
@@ -116,6 +117,24 @@ const services: Service[] = [
         'Commercial: Custom quotes available'
       ],
       note: '*Pricing depends on size – message us for a quote!'
+    }
+  },
+  {
+    id: 'window-cleaning',
+    title: 'Window Cleaning',
+    icon: <Window className="w-6 h-6" />,
+    description: 'Professional window cleaning for both residential and commercial properties. Crystal clear windows that enhance your property\'s appearance and let in more natural light.',
+    pricing: {
+      title: 'Pricing:',
+      items: [
+        'Residential Window Cleaning: $5 per glass',
+        'Commercial Window Cleaning: $5 per glass',
+        'Interior & Exterior Cleaning',
+        'Screen Cleaning Available',
+        'Regular Maintenance Programs',
+        'Custom packages for large properties'
+      ],
+      note: 'Contact us for a free estimate on your specific needs!'
     }
   }
 ]
@@ -240,6 +259,7 @@ const Services = () => {
     <Recycle key="recycle" className="w-8 h-8 text-white" />,
     <Sofa key="sofa" className="w-8 h-8 text-white" />,
     <Truck key="truck" className="w-8 h-8 text-white" />,
+    <Window key="window" className="w-8 h-8 text-white" />,
     <Droplets key="droplets" className="w-8 h-8 text-white" />,
     <Sparkles key="sparkles" className="w-8 h-8 text-white" />
   ]
