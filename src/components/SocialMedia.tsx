@@ -14,6 +14,7 @@ const SocialMedia = () => {
   const [isPlaying, setIsPlaying] = useState(true)
   const [isUserInteracting, setIsUserInteracting] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [videoLoading, setVideoLoading] = useState<boolean[]>([])
   const containerRef = useRef<HTMLDivElement>(null)
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
   const playTimeoutRef = useRef<NodeJS.Timeout | null>(null)
@@ -156,6 +157,11 @@ const SocialMedia = () => {
     }
   }, [handleWheel, handleKeyDown])
 
+  // Initialize video loading states
+  useEffect(() => {
+    setVideoLoading(new Array(socialVideos.length).fill(true))
+  }, [socialVideos.length])
+
   // Auto-play current video and pause others
   useEffect(() => {
     // Clear any existing timeout
@@ -173,6 +179,9 @@ const SocialMedia = () => {
             }
           })
           
+          // Preload the current video
+          video.preload = "metadata"
+          
           // Add a small delay before playing to prevent conflicts
           playTimeoutRef.current = setTimeout(() => {
             video.currentTime = 0
@@ -184,6 +193,8 @@ const SocialMedia = () => {
           }, 100)
         } else {
           video.pause()
+          // Set other videos to not preload to save bandwidth
+          video.preload = "none"
         }
       }
     })
@@ -206,6 +217,23 @@ const SocialMedia = () => {
         setIsPlaying(false)
       })
     }
+  }
+
+  // Handle video loading events
+  const handleVideoLoadStart = (index: number) => {
+    setVideoLoading(prev => {
+      const newLoading = [...prev]
+      newLoading[index] = true
+      return newLoading
+    })
+  }
+
+  const handleVideoCanPlay = (index: number) => {
+    setVideoLoading(prev => {
+      const newLoading = [...prev]
+      newLoading[index] = false
+      return newLoading
+    })
   }
 
   return (
@@ -240,12 +268,28 @@ const SocialMedia = () => {
                   className="w-full h-full object-cover"
                   muted
                   playsInline
+                  preload={index === 0 ? "metadata" : "none"}
                   onEnded={handleVideoEnded}
                   onClick={togglePlayPause}
+                  onLoadStart={() => handleVideoLoadStart(index)}
+                  onCanPlay={() => handleVideoCanPlay(index)}
+                  poster={`data:image/svg+xml;base64,${btoa(`
+                    <svg width="400" height="600" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="100%" height="100%" fill="#1f2937"/>
+                      <text x="50%" y="50%" text-anchor="middle" fill="white" font-family="Arial" font-size="16">Loading...</text>
+                    </svg>
+                  `)}`}
                 >
                   <source src={video.src} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
+
+                {/* Loading Spinner */}
+                {videoLoading[index] && (
+                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-10">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+                  </div>
+                )}
 
                 {/* Video Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">
