@@ -81,12 +81,19 @@ const SocialMedia = () => {
   // Handle touch/swipe for mobile
   const handleTouchStart = (e: React.TouchEvent) => {
     e.preventDefault()
+    e.stopPropagation()
     const touch = e.touches[0]
     const startY = touch.clientY
     const startTime = Date.now()
 
+    const handleTouchMove = (e: TouchEvent) => {
+      e.preventDefault()
+      e.stopPropagation()
+    }
+
     const handleTouchEnd = (e: TouchEvent) => {
       e.preventDefault()
+      e.stopPropagation()
       const touch = e.changedTouches[0]
       const endY = touch.clientY
       const endTime = Date.now()
@@ -104,7 +111,15 @@ const SocialMedia = () => {
       }
     }
 
+    document.addEventListener('touchmove', handleTouchMove, { passive: false })
     document.addEventListener('touchend', handleTouchEnd, { once: true, passive: false })
+    
+    // Cleanup touchmove listener
+    const cleanup = () => {
+      document.removeEventListener('touchmove', handleTouchMove)
+    }
+    
+    document.addEventListener('touchend', cleanup, { once: true })
   }
 
   // Handle keyboard navigation
@@ -139,21 +154,39 @@ const SocialMedia = () => {
     if (!container) return
 
     const wheelHandler = (e: WheelEvent) => {
-      // Only handle wheel events when the container is in view
+      // Only handle wheel events when the container is in view and focused
       const rect = container.getBoundingClientRect()
       const isInView = rect.top < window.innerHeight && rect.bottom > 0
+      const isMouseOver = rect.left <= e.clientX && e.clientX <= rect.right && 
+                         rect.top <= e.clientY && e.clientY <= rect.bottom
       
-      if (isInView) {
+      if (isInView && isMouseOver) {
+        e.preventDefault()
+        e.stopPropagation()
         handleWheel(e)
+      }
+    }
+
+    // Prevent page scroll when touching the video container
+    const preventPageScroll = (e: TouchEvent) => {
+      const rect = container.getBoundingClientRect()
+      const touch = e.touches[0]
+      const isTouchOver = rect.left <= touch.clientX && touch.clientX <= rect.right && 
+                         rect.top <= touch.clientY && touch.clientY <= rect.bottom
+      
+      if (isTouchOver) {
+        e.preventDefault()
       }
     }
 
     container.addEventListener('wheel', wheelHandler, { passive: false })
     document.addEventListener('keydown', handleKeyDown)
+    document.addEventListener('touchmove', preventPageScroll, { passive: false })
 
     return () => {
       container.removeEventListener('wheel', wheelHandler)
       document.removeEventListener('keydown', handleKeyDown)
+      document.removeEventListener('touchmove', preventPageScroll)
     }
   }, [handleWheel, handleKeyDown])
 
@@ -250,8 +283,9 @@ const SocialMedia = () => {
 
         <div 
           ref={containerRef}
-          className="relative max-w-sm sm:max-w-md mx-auto h-[500px] sm:h-[600px] overflow-hidden rounded-2xl bg-gray-900 shadow-2xl"
+          className="relative max-w-sm sm:max-w-md mx-auto h-[500px] sm:h-[600px] overflow-hidden rounded-2xl bg-gray-900 shadow-2xl touch-none"
           onTouchStart={handleTouchStart}
+          style={{ touchAction: 'none' }}
         >
           {/* Video Container */}
           <div 
