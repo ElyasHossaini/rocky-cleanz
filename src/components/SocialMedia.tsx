@@ -40,7 +40,7 @@ const SocialMedia = () => {
   ]
 
   // Handle video play/pause
-  const togglePlayPause = () => {
+  const togglePlayPause = useCallback(() => {
     const currentVideo = videoRefs.current[currentVideoIndex]
     if (currentVideo) {
       if (currentVideo.paused) {
@@ -54,7 +54,7 @@ const SocialMedia = () => {
         setIsPlaying(false)
       }
     }
-  }
+  }, [currentVideoIndex])
 
   // Handle wheel scroll for video navigation
   const handleWheel = useCallback((e: WheelEvent) => {
@@ -236,7 +236,7 @@ const SocialMedia = () => {
                 className="relative w-full h-[500px] sm:h-[600px] flex-shrink-0"
               >
                 <video
-                  ref={el => videoRefs.current[index] = el}
+                  ref={el => { videoRefs.current[index] = el }}
                   className="w-full h-full object-cover"
                   muted
                   playsInline
