@@ -87,7 +87,7 @@ const Footer = () => {
       title: 'Contact Info',
       items: [
         { icon: <Phone className="w-5 h-5" />, text: '403-479-4415' },
-        { icon: <Mail className="w-5 h-5" />, text: 'info@rockycleanz.com' },
+        { icon: <Mail className="w-5 h-5" />, text: 'probinz2025@gmail.com' },
         { icon: <MapPin className="w-5 h-5" />, text: 'Calgary, AB' }
       ]
     },
