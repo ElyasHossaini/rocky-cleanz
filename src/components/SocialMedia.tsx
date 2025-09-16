@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 
 interface SocialVideo {
   id: number
@@ -57,7 +57,7 @@ const SocialMedia = () => {
   }
 
   // Handle wheel scroll for video navigation
-  const handleWheel = (e: WheelEvent) => {
+  const handleWheel = useCallback((e: WheelEvent) => {
     e.preventDefault()
     e.stopPropagation()
     
@@ -75,7 +75,7 @@ const SocialMedia = () => {
     
     // Reset interaction flag after a delay
     setTimeout(() => setIsUserInteracting(false), 500)
-  }
+  }, [isUserInteracting, currentVideoIndex, socialVideos.length])
 
   // Handle touch/swipe for mobile
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -107,7 +107,7 @@ const SocialMedia = () => {
   }
 
   // Handle keyboard navigation
-  const handleKeyDown = (e: KeyboardEvent) => {
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.key === 'ArrowDown' && currentVideoIndex < socialVideos.length - 1) {
       e.preventDefault()
       setCurrentVideoIndex(prev => prev + 1)
@@ -118,7 +118,7 @@ const SocialMedia = () => {
       e.preventDefault()
       togglePlayPause()
     }
-  }
+  }, [currentVideoIndex, socialVideos.length, togglePlayPause])
 
   // Check if mobile on mount
   useEffect(() => {
@@ -154,7 +154,7 @@ const SocialMedia = () => {
       container.removeEventListener('wheel', wheelHandler)
       document.removeEventListener('keydown', handleKeyDown)
     }
-  }, [currentVideoIndex, isUserInteracting])
+  }, [handleWheel, handleKeyDown])
 
   // Auto-play current video and pause others
   useEffect(() => {

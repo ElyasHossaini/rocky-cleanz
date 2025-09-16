@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 
 interface BeforeAfterImage {
@@ -82,10 +82,10 @@ const BeforeAfter = () => {
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             Before & After
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            See the amazing transformations we've achieved for our Calgary clients. 
-            Professional exterior cleaning that brings your property back to life.
-          </p>
+           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+             See the amazing transformations we&apos;ve achieved for our Calgary clients. 
+             Professional exterior cleaning that brings your property back to life.
+           </p>
         </div>
 
         <div className="relative max-w-4xl mx-auto">
