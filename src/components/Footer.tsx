@@ -121,7 +121,7 @@ const Footer = () => {
                 </h3>
               </div>
               <p className="text-gray-300 leading-relaxed">
-                Professional exterior cleaning services bringing sparkle back to Calgary homes & businesses.
+                Professional cleaning services bringing sparkle back to Calgary homes & businesses.
               </p>
             </div>
             
@@ -200,7 +200,7 @@ const Footer = () => {
               </h3>
             </div>
             <p className="text-gray-300 leading-relaxed text-lg">
-              Professional exterior cleaning services bringing sparkle back to Calgary homes & businesses.
+              Professional cleaning services bringing sparkle back to Calgary homes & businesses.
             </p>
           </motion.div>
           

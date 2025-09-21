@@ -84,7 +84,7 @@ const BeforeAfter = () => {
           </h2>
            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
              See the amazing transformations we&apos;ve achieved for our Calgary clients. 
-             Professional exterior cleaning that brings your property back to life.
+             Professional cleaning that brings your property back to life.
            </p>
         </div>
 

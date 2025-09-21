@@ -129,7 +129,7 @@ const services: Service[] = [
       items: [
         'Residential Window Cleaning: $5 per glass',
         'Commercial Window Cleaning: $5 per glass',
-        'Interior & Exterior Cleaning',
+        'Interior & Outdoor Cleaning',
         'Screen Cleaning Available',
         'Regular Maintenance Programs',
         'Custom packages for large properties'

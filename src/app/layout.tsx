@@ -79,7 +79,7 @@ export default function RootLayout({
           "itemOffered": {
             "@type": "Service",
             "name": "Pressure Washing",
-            "description": "Professional pressure washing for driveways, sidewalks, and exterior surfaces"
+            "description": "Professional pressure washing for driveways, sidewalks, and outdoor surfaces"
           }
         },
         {
@@ -119,7 +119,7 @@ export default function RootLayout({
           "@type": "Person",
           "name": "Sarah Johnson"
         },
-        "reviewBody": "Excellent service! They did a fantastic job cleaning our house exterior. Very professional and thorough."
+        "reviewBody": "Excellent service! They did a fantastic job cleaning our house. Very professional and thorough."
       },
       {
         "@type": "Review",

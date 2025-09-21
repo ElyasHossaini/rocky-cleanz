@@ -29,8 +29,8 @@ const SocialMedia = () => {
     {
       id: 2,
       src: '/socials/7ff34c3c969842c9b2900f86c6a5d8bc.MOV',
-      title: 'Exterior Cleaning Magic',
-      description: 'See the amazing results of our comprehensive exterior cleaning service in action!'
+      title: 'Cleaning Magic',
+      description: 'See the amazing results of our comprehensive cleaning service in action!'
     },
     {
       id: 3,
