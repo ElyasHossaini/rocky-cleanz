@@ -87,7 +87,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-xl md:text-3xl text-gray-600 mb-6 font-medium"
         >
-          Professional Exterior Cleaning Services
+          Professional Cleaning Services
         </motion.p>
 
         {/* Description */}

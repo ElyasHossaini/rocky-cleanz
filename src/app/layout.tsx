@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 // SEO and metadata configuration
 export const metadata: Metadata = {
   title: 'Rocky Cleanz - Professional Cleaning Services Calgary',
-  description: 'Professional exterior cleaning services bringing sparkle back to Calgary homes & businesses. Fully insured, eco-friendly, and 5-star rated.',
+  description: 'Professional cleaning services bringing sparkle back to Calgary homes & businesses. Fully insured, eco-friendly, and 5-star rated.',
   keywords: 'cleaning, pressure washing, Calgary, window cleaning, gutter cleaning, house washing',
   openGraph: {
     title: 'Rocky Cleanz - Professional Cleaning Services Calgary',
