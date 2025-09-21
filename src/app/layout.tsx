@@ -7,12 +7,12 @@ const inter = Inter({ subsets: ['latin'] })
 
 // SEO and metadata configuration
 export const metadata: Metadata = {
-  title: 'Rocky Cleanz - Professional Exterior Cleaning Services Calgary',
+  title: 'Rocky Cleanz - Professional Cleaning Services Calgary',
   description: 'Professional exterior cleaning services bringing sparkle back to Calgary homes & businesses. Fully insured, eco-friendly, and 5-star rated.',
-  keywords: 'exterior cleaning, pressure washing, Calgary, window cleaning, gutter cleaning, house washing',
+  keywords: 'cleaning, pressure washing, Calgary, window cleaning, gutter cleaning, house washing',
   openGraph: {
-    title: 'Rocky Cleanz - Professional Exterior Cleaning Services Calgary',
-    description: 'Professional exterior cleaning services bringing sparkle back to Calgary homes & businesses.',
+    title: 'Rocky Cleanz - Professional Cleaning Services Calgary',
+    description: 'Professional cleaning services bringing sparkle back to Calgary homes & businesses.',
     url: 'https://rockycleanz.com',
     siteName: 'Rocky Cleanz',
     images: [
@@ -43,7 +43,7 @@ export default function RootLayout({
     "@type": "LocalBusiness",
     "name": "Rocky Cleanz",
     "image": "https://rockycleanz.com/images/logo.png",
-    "description": "Professional exterior cleaning services bringing sparkle back to Calgary homes & businesses.",
+    "description": "Professional cleaning services bringing sparkle back to Calgary homes & businesses.",
     "url": "https://rockycleanz.com",
     "telephone": "+1-403-479-4415",
     "email": "info@rockycleanz.com",
@@ -72,7 +72,7 @@ export default function RootLayout({
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Exterior Cleaning Services",
+      "name": "Cleaning Services",
       "itemListElement": [
         {
           "@type": "Offer",
