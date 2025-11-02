@@ -19,123 +19,76 @@ interface Service {
   id: string
   title: string
   icon: React.ReactNode
-  description: string
-  pricing: {
-    title: string
-    items: string[]
-    note?: string
-  }
+  idealFor: string
+  includedServices: string[]
+  snowRemovalCoverage: string
+  estimatedPrice: string
 }
 
 // Services data
 const services: Service[] = [
   {
-    id: 'general-cleaning',
-    title: 'General Cleaning',
+    id: 'essential-care',
+    title: 'Essential Care Plan',
     icon: <Home className="w-6 h-6" />,
-    description: 'Comprehensive residential and commercial cleaning services. From regular maintenance to deep cleaning, we keep your space spotless and healthy.',
-    pricing: {
-      title: 'Services Include:',
-      items: [
-        'Residential & Commercial Cleaning',
-        'Regular Maintenance (Weekly/Monthly)',
-        'Deep Cleaning & Spring Cleaning',
-        'Move-in/Move-out Cleaning',
-        'Kitchen & Bathroom Focus',
-        'Window Cleaning',
-        'Custom Cleaning Packages'
-      ],
-      note: 'Contact us for a free estimate! Pricing varies based on size, frequency, and specific requirements.'
-    }
+    idealFor: 'Small homes, duplexes, and townhouses',
+    includedServices: [
+      'Bin cleaning (1×/month)',
+      'Front walkway & entry pressure wash (1×/month)',
+      'Lawn mowing & edging (bi-weekly)',
+      'Light weed removal',
+      'Ground-level window cleaning (1×/month)'
+    ],
+    snowRemovalCoverage: 'Driveway and front walkway',
+    estimatedPrice: '$179 – $229 / month'
   },
   {
-    id: 'bin-cleaning',
-    title: 'Bin & Dumpster Cleaning',
-    icon: <Recycle className="w-6 h-6" />,
-    description: 'Available for homes & businesses. Odour-free, pest-reducing, and eco-friendly cleaning that keeps your bins fresh and sanitary.',
-    pricing: {
-      title: 'Pricing:',
-      items: [
-        'Residential Bins: $50 for 3 bins',
-        'Commercial Bins: Same as dumpsters',
-        'Dumpsters: Starting at $150',
-        'Monthly Service: 20% discount'
-      ],
-      note: 'Fast and effective service!'
-    }
-  },
-  {
-    id: 'carpet-cleaning',
-    title: 'Carpet Cleaning',
+    id: 'executive-care',
+    title: 'Executive Care Plan',
     icon: <Sofa className="w-6 h-6" />,
-    description: 'Choose from hand washing (deep clean) or machine vacuuming (quick refresh). Great for removing dirt, allergens, and stains from your carpets.',
-    pricing: {
-      title: 'Pricing:',
-      items: [
-        'Residential Carpet Cleaning: $0.50/sq ft',
-        'Commercial Carpet Cleaning: $0.40/sq ft',
-        'Hand Cleaning (Deep Clean): $0.50/sq ft',
-        'Vacuum Cleaning (Quick Refresh): $0.30/sq ft',
-        'Stain Treatment: $25 per stain',
-        'Bundle Discounts: Available for multi-room jobs'
-      ],
-      note: 'Bundle discounts available for multi-room carpet jobs!'
-    }
+    idealFor: 'Mid-sized homes, corner lots, or small commercial units',
+    includedServices: [
+      'Bin cleaning (2×/month)',
+      'Driveway, sidewalk & patio pressure wash (rotating schedule)',
+      'Lawn mowing, edging & weed control (weekly)',
+      'Hedge trimming (monthly)',
+      'Exterior window cleaning (1×/month)',
+      'Seasonal cleanup (leaves, debris, salt buildup)'
+    ],
+    snowRemovalCoverage: 'Driveway, front walkway, and sidewalk frontage',
+    estimatedPrice: '$279 – $359 / month'
   },
   {
-    id: 'junk-removal',
-    title: 'Junk Removal',
+    id: 'prestige-care',
+    title: 'Prestige Care Plan',
+    icon: <Sparkles className="w-6 h-6" />,
+    idealFor: 'Large homes, multi-unit properties, or medium commercial sites',
+    includedServices: [
+      'Bin cleaning (weekly, all containers)',
+      'Power washing rotation (front, sides, back + entry)',
+      'Lawn mowing & edging (weekly)',
+      'Weed removal & hedge trimming (bi-weekly)',
+      'Exterior window cleaning (2×/month)',
+      'Seasonal deep cleanup (spring + fall)'
+    ],
+    snowRemovalCoverage: 'Driveways, walkways, sidewalks, and small lots',
+    estimatedPrice: '$449 – $599 / month'
+  },
+  {
+    id: 'signature-property',
+    title: 'Signature Property Plan',
     icon: <Truck className="w-6 h-6" />,
-    description: 'Tired of the clutter? Let Rocky Cleanz handle the mess so you don\'t have to! We offer professional junk removal for both residential and commercial clients.',
-    pricing: {
-      title: 'Services Include:',
-      items: [
-        'Residential Junk Removal: Custom pricing',
-        'Commercial Junk Removal: Custom pricing',
-        'Furniture, Appliances, and Mattress Removal',
-        'Yard Waste & Construction Debris',
-        'Basement, Garage & Estate Cleanouts',
-        'Office, Rental & Property Cleanups',
-        'Responsible Disposal - We recycle what we can!'
-      ],
-      note: 'Custom pricing based on volume and type of items'
-    }
-  },
-  {
-    id: 'concrete-pressure-washing',
-    title: 'Concrete Pressure Washing',
-    icon: <SprayCan className="w-6 h-6" />,
-    description: 'Removes dirt, grime & buildup from driveways, sidewalks, patios & more. Professional pressure washing that restores your concrete surfaces to their original beauty.',
-    pricing: {
-      title: 'Pricing:',
-      items: [
-        'Residential Concrete Washing: Starting at $150',
-        'Commercial Concrete Washing: Starting at $200',
-        'Driveways: Starting at $150',
-        'Sidewalks: Starting at $100',
-        'Patios: Starting at $200',
-        'Commercial: Custom quotes available'
-      ],
-      note: '*Pricing depends on size – message us for a quote!'
-    }
-  },
-  {
-    id: 'window-cleaning',
-    title: 'Window Cleaning',
-    icon: <AppWindow className="w-6 h-6" />,
-    description: 'Professional window cleaning for both residential and commercial properties. Crystal clear windows that enhance your property\'s appearance and let in more natural light.',
-    pricing: {
-      title: 'Pricing:',
-      items: [
-        'Residential Window Cleaning: $5 per glass',
-        'Commercial Window Cleaning: $5 per glass',
-        'Interior & Outdoor Cleaning',
-        'Screen Cleaning Available',
-        'Regular Maintenance Programs',
-        'Custom packages for large properties'
-      ],
-      note: 'Contact us for a free estimate on your specific needs!'
-    }
+    idealFor: 'Plazas, offices, restaurants, and large commercial sites',
+    includedServices: [
+      'Weekly property maintenance (landscaping + cleaning)',
+      'Power washing (sidewalks, drive-thru lanes, façades, dumpster pads)',
+      'Window cleaning (bi-weekly or monthly)',
+      'Full bin cleaning (all containers)',
+      'Lawn mowing, trimming, and debris clearing (weekly)',
+      'Dedicated service manager + 24-hour response'
+    ],
+    snowRemovalCoverage: 'Full lot clearing, walkways, salting, and sanding',
+    estimatedPrice: 'From $699 + (custom quote)'
   }
 ]
 
@@ -212,31 +165,52 @@ const ServiceCard = ({
             className="overflow-hidden"
           >
             <div className="p-6 border-t border-blue-100">
-              {/* Service description */}
-              <p className="text-gray-900 mb-4 leading-relaxed">
-                {service.description}
-              </p>
-              
-              {/* Pricing information */}
-              <div className="border-t border-blue-100 pt-4">
-                <h4 className="text-blue-600 font-semibold mb-3">
-                  {service.pricing.title}
+              {/* Ideal For */}
+              <div className="mb-4">
+                <h4 className="text-blue-600 font-semibold mb-2">
+                  Ideal for:
                 </h4>
-                <ul className="space-y-2 mb-3">
-                  {service.pricing.items.map((item, index) => (
+                <p className="text-gray-900 leading-relaxed">
+                  {service.idealFor}
+                </p>
+              </div>
+              
+              {/* Included Services */}
+              <div className="border-t border-blue-100 pt-4 mb-4">
+                <h4 className="text-blue-600 font-semibold mb-3">
+                  Included Services:
+                </h4>
+                <ul className="space-y-2">
+                  {service.includedServices.map((item, index) => (
                     <li 
                       key={index} 
-                      className="text-gray-900 border-b border-blue-50 pb-2 last:border-b-0"
+                      className="text-gray-900 flex items-start"
                     >
-                      {item}
+                      <span className="text-blue-600 mr-2">•</span>
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
-                {service.pricing.note && (
-                  <p className="text-sm text-gray-900 italic">
-                    {service.pricing.note}
-                  </p>
-                )}
+              </div>
+
+              {/* Snow Removal Coverage */}
+              <div className="border-t border-blue-100 pt-4 mb-4">
+                <h4 className="text-blue-600 font-semibold mb-2">
+                  Snow Removal Coverage:
+                </h4>
+                <p className="text-gray-900 leading-relaxed">
+                  {service.snowRemovalCoverage}
+                </p>
+              </div>
+
+              {/* Estimated Price */}
+              <div className="border-t border-blue-100 pt-4">
+                <h4 className="text-blue-600 font-semibold mb-2">
+                  Estimated Price:
+                </h4>
+                <p className="text-gray-900 font-semibold text-lg">
+                  {service.estimatedPrice}
+                </p>
               </div>
             </div>
           </motion.div>
@@ -289,10 +263,13 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-blue-600 mb-4">
-              Our Services
+              Rocky Cleanz Monthly Service Packages
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Choose from our range of professional cleaning services
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-2">
+              (Exterior Cleaning + Landscaping + Snow Removal)
+            </p>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Comprehensive monthly service packages tailored to your property needs.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
@@ -347,11 +324,14 @@ const Services = () => {
             </motion.div>
           </motion.div>
           <h2 className="text-4xl md:text-5xl font-bold text-blue-600 mb-4">
-            Our Professional Services
+            Rocky Cleanz Monthly Service Packages
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            From pressure washing to bin cleaning, we offer comprehensive solutions to keep your property looking its best. 
-            Each service is tailored to your specific needs with competitive pricing and guaranteed results.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-2">
+            (Exterior Cleaning + Landscaping + Snow Removal)
+          </p>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Comprehensive monthly service packages tailored to your property needs. 
+            Each plan combines exterior cleaning, landscaping, and snow removal for hassle-free property maintenance.
           </p>
         </motion.div>
 
